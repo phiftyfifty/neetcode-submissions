@@ -1,0 +1,11 @@
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        # space complexity = O(N = number of strings * length of each string)
+        # time complexity = O(N = number of strings * length of each string )
+        hash_table = defaultdict(list) 
+        for s in strs:
+            count = [0] * 26
+            for ch in s:
+                count[ord(ch) - ord('a')] += 1
+            hash_table[tuple(count)].append(s)
+        return list(hash_table.values())
